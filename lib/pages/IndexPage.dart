@@ -395,12 +395,12 @@ class _IndexPage extends State<IndexPage> with AutomaticKeepAliveClientMixin {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(right: 15, top: 5, bottom: 5),
+                margin: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(left: 15,top: 10,bottom: 10),
+                      margin: EdgeInsets.only(top: 10,bottom: 10),
                       child: Ink(
                         child: InkWell(
                           splashColor: Colors.black26,
