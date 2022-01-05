@@ -172,7 +172,7 @@ class Login_ extends State<recharge> {
                               is_show = true;
                              yj = int.parse(e);
                              int w = DateTime.now().weekday;
-                              rate = 0.02;
+                              rate = 1.0;
                              give_money = yj*rate;
                             });
 
@@ -202,10 +202,10 @@ class Login_ extends State<recharge> {
                     ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(left: 10,top: 10),
-                  child: Text("赠送金额:"+give_money.toStringAsFixed(2)+"元",style: TextStyle(color: Colors.red),),
-                ),
+//                Container(
+//                  padding: EdgeInsets.only(left: 10,top: 10),
+//                  child: Text("赠送金额:"+give_money.toStringAsFixed(2)+"元",style: TextStyle(color: Colors.red),),
+//                ),
                 Container(
                   alignment: Alignment.center,
                   child: MaterialButton(

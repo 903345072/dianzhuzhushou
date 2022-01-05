@@ -286,8 +286,8 @@ class _Mine extends State<Mine>  with SingleTickerProviderStateMixin ,AutomaticK
                             children: <Widget>[
                               GestureDetector(
                                 onTap: () {
-                                  Toast.toast(context,msg:"请联系客服充值");
-                                  //JumpAnimation().jump(recharge(), context);
+                                  //Toast.toast(context,msg:"请联系客服充值");
+                                  JumpAnimation().jump(recharge(), context);
                                 },
                                 child: Container(
                                   padding: EdgeInsets.only(bottom: 2),
