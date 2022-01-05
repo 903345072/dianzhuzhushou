@@ -222,13 +222,16 @@ class _Mine extends State<Mine>  with SingleTickerProviderStateMixin ,AutomaticK
                                     )
                                   ],
                                 ),
-                                IconButton(
-                                  onPressed: () async{
+                                Container(
+
+                                  child: IconButton(
+                                    onPressed: () async{
 //                            var image = await ImagePicker.pickImage(source: ImageSource.camera);
 //                            print(image);
-                                    _openModalBottomSheet();
-                                  },
-                                  icon: Icon(Icons.edit,color: Colors.white,),
+                                      _openModalBottomSheet();
+                                    },
+                                    icon: Icon(Icons.edit,color: Colors.white,),
+                                  ),
                                 )
                               ],
                             ),

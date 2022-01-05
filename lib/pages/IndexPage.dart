@@ -281,7 +281,7 @@ class _IndexPage extends State<IndexPage> with AutomaticKeepAliveClientMixin {
                                 Text(zhongjiang[index]["nickname"]+" ",style: TextStyle(color: Color(0xff575757))),
                                 Text("喜中",style: TextStyle(color: Color(0xff575757))),
                                 zhongjiang[index]["type"] =="f"? Text("竞彩足球",style: TextStyle(color: Color(0xff575757))):zhongjiang[index]["type"] =="bd"?Text("北京单场",style: TextStyle(color: Color(0xff575757))):Text("竞彩篮球",style: TextStyle(color: Color(0xff575757))),
-                                Text(formatNum(zhongjiang[index]["award_money"], 1),style: TextStyle(color: Colors.red),),
+                                Text(zhongjiang[index]["award_money"].toString(),style: TextStyle(color: Colors.red),),
                                 Text("元",style: TextStyle(color: Color(0xff575757)))
                               ],
                             ),
@@ -309,9 +309,7 @@ class _IndexPage extends State<IndexPage> with AutomaticKeepAliveClientMixin {
                 ),
               ),
 
-              Divider(
-                height: 7,
-              ),
+
               Container(
                 margin: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
                 child: Row(
@@ -343,7 +341,7 @@ class _IndexPage extends State<IndexPage> with AutomaticKeepAliveClientMixin {
                               child: Wrap(
                                 direction: Axis.vertical,
                                 alignment: WrapAlignment.spaceAround,
-                                children: <Widget>[Text("竞彩足球"), Text("五大联赛",style: TextStyle(color: Colors.grey,fontSize: ScreenUtil().setSp(12)))],
+                                children: <Widget>[Text("竞彩足球")],
                               ),
                             ),
 
@@ -380,7 +378,7 @@ class _IndexPage extends State<IndexPage> with AutomaticKeepAliveClientMixin {
                                 child: Wrap(
                                   direction: Axis.vertical,
                                   alignment: WrapAlignment.spaceAround,
-                                  children: <Widget>[Text("竞彩篮球"), Text("美职女篮开赛",style: TextStyle(color: Colors.grey,fontSize: ScreenUtil().setSp(12)),)],
+                                  children: <Widget>[Text("竞彩篮球")],
                                 ),
                               )
                             ],
@@ -391,88 +389,6 @@ class _IndexPage extends State<IndexPage> with AutomaticKeepAliveClientMixin {
                         ),
                       ),
                     )
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(top: 10,bottom: 10),
-                      child: Ink(
-                        child: InkWell(
-                          splashColor: Colors.black26,
-                          child: Wrap(
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            spacing: 5,
-                            children: <Widget>[
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadiusDirectional.circular(16)),
-                                clipBehavior: Clip.antiAlias,
-                                child: Image.asset(
-                                  "img/pl3.jpg",
-                                  fit: BoxFit.fill,
-                                  width: ScreenUtil().setWidth(55),
-                                  height: ScreenUtil().setWidth(55),
-                                ),
-                              ),
-                              Container(
-                                height: ScreenUtil().setWidth(55),
-                                child: Wrap(
-                                  direction: Axis.vertical,
-                                  alignment: WrapAlignment.spaceAround,
-                                  children: <Widget>[Text("排列三"), Text("排列三开售中",style: TextStyle(color: Colors.grey,fontSize: ScreenUtil().setSp(12)),)],
-                                ),
-                              )
-                            ],
-                          ),
-                          onTap: () {
-                            JumpAnimation().jump(pailie(), context);
-                          },
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10,bottom: 10),
-                      child: Ink(
-                        child: InkWell(
-                          splashColor: Colors.black26,
-                          child: Wrap(
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            spacing: 5,
-                            children: <Widget>[
-                              Card(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadiusDirectional.circular(12)),
-                                clipBehavior: Clip.antiAlias,
-                                child: Image.asset(
-                                  "img/beijing.jpg",
-                                  fit: BoxFit.fill,
-                                  width: ScreenUtil().setWidth(55),
-                                  height: ScreenUtil().setWidth(55),
-                                ),
-                              ),
-                              Container(
-                                height: ScreenUtil().setWidth(55),
-                                child: Wrap(
-                                  direction: Axis.vertical,
-                                  alignment: WrapAlignment.spaceAround,
-                                  children: <Widget>[Text("北京单场(单关)"), Text("北单开售中",style: TextStyle(color: Colors.grey,fontSize: ScreenUtil().setSp(12)),)],
-                                ),
-                              )
-                            ],
-                          ),
-                          onTap: () {
-                            JumpAnimation().jump(beijing(), context);
-                          },
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -508,7 +424,7 @@ class _IndexPage extends State<IndexPage> with AutomaticKeepAliveClientMixin {
                                 child: Wrap(
                                   direction: Axis.vertical,
                                   alignment: WrapAlignment.spaceAround,
-                                  children: <Widget>[Text("北京单场(串关)"), Text("北单开售中",style: TextStyle(color: Colors.grey,fontSize: ScreenUtil().setSp(12)),)],
+                                  children: <Widget>[Text("北京单场(串关)")],
                                 ),
                               )
                             ],
@@ -519,6 +435,90 @@ class _IndexPage extends State<IndexPage> with AutomaticKeepAliveClientMixin {
                         ),
                       ),
                     ),
+                    Container(
+                      margin: EdgeInsets.only(top: 10,bottom: 10),
+                      child: Ink(
+                        child: InkWell(
+                          splashColor: Colors.black26,
+                          child: Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            spacing: 5,
+                            children: <Widget>[
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                    BorderRadiusDirectional.circular(12)),
+                                clipBehavior: Clip.antiAlias,
+                                child: Image.asset(
+                                  "img/beijing.jpg",
+                                  fit: BoxFit.fill,
+                                  width: ScreenUtil().setWidth(55),
+                                  height: ScreenUtil().setWidth(55),
+                                ),
+                              ),
+                              Container(
+                                height: ScreenUtil().setWidth(55),
+                                child: Wrap(
+                                  direction: Axis.vertical,
+                                  alignment: WrapAlignment.spaceAround,
+                                  children: <Widget>[Text("北京单场(单关)")],
+                                ),
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            JumpAnimation().jump(beijing(), context);
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              Container(
+                margin: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 10,bottom: 10),
+                      child: Ink(
+                        child: InkWell(
+                          splashColor: Colors.black26,
+                          child: Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            spacing: 5,
+                            children: <Widget>[
+                              Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                    BorderRadiusDirectional.circular(16)),
+                                clipBehavior: Clip.antiAlias,
+                                child: Image.asset(
+                                  "img/pl3.jpg",
+                                  fit: BoxFit.fill,
+                                  width: ScreenUtil().setWidth(55),
+                                  height: ScreenUtil().setWidth(55),
+                                ),
+                              ),
+                              Container(
+                                height: ScreenUtil().setWidth(55),
+                                child: Wrap(
+                                  direction: Axis.vertical,
+                                  alignment: WrapAlignment.spaceAround,
+                                  children: <Widget>[Text("排列三")],
+                                ),
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            JumpAnimation().jump(pailie(), context);
+                          },
+                        ),
+                      ),
+                    ),
+
                   ],
                 ),
               ),
