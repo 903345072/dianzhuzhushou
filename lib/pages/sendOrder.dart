@@ -40,7 +40,7 @@ class Login_ extends State<sendOrder> {
   String new_pwd;
   String re_pwd;
   bool check = false;
-  double min_yj = 5;
+  double min_yj = 2;
   double max_yj = 10;
   double yj = 5;
   int start_money;
@@ -130,34 +130,9 @@ class Login_ extends State<sendOrder> {
                                  ),
                                ),
                              ),
-                             Expanded(
-                               child: TextField(
-                                 //限制2长度],//只允许输入数字
-                                 onChanged: (e) {
-                                   setState(() {
-                                     yj = double.parse(e);
-                                   });
-                                 },
-                                 controller: TextEditingController.fromValue(
-                                     TextEditingValue(
-                                         text:
-                                         '${this.yj == null ? "" : this.yj}',
-                                         selection: TextSelection.fromPosition(
-                                             TextPosition(
-                                                 affinity:
-                                                 TextAffinity.downstream,
-                                                 offset: '${this.yj}'.length)))),
-                                 keyboardType: TextInputType.number,
-                                 //键盘类型，数字键盘
-
-                                 decoration: InputDecoration(
-                                   contentPadding: EdgeInsets.only(left: 10),
-                                   hintText: "",
-                                   border: OutlineInputBorder(
-                                       borderRadius:
-                                       BorderRadius.all(Radius.circular(0))),
-                                 ),
-                               ),
+                             Container(
+                               margin: EdgeInsets.only(left: 10,right: 10),
+                               child: Text(yj.toString()),
                              ),
                              GestureDetector(
                                onTap: () {

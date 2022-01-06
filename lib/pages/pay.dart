@@ -17,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
+import 'IndexBack.dart';
 
 class pay extends StatefulWidget {
   Map data;
@@ -45,7 +46,7 @@ class Login_ extends State<pay> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.data);
+
     ScreenUtil.instance = ScreenUtil(width: 417, height: 867)..init(context);
 
     // TODO: implement build
@@ -65,20 +66,18 @@ class Login_ extends State<pay> {
         backgroundColor: Colors.white,
         body: ListView(
           children: <Widget>[
-           Column(
+           widget.data["type"] == 1?Column(
 
              children: <Widget>[
                Container(
                  margin: EdgeInsets.only(top: 20,bottom: 20),
-                 child: Text((widget.data["actual_price"]/100).toString()+"元",style: TextStyle(color: Colors.red,fontSize: 24),),
+                 child: Text((widget.data["actual_price"]).toString()+"元",style: TextStyle(color: Colors.red,fontSize: 24),),
                ),
                Container(
-                 margin: EdgeInsets.only(top: 20,bottom: 20),
-                 child: Image.network("https://data.020zf.com/api.php/pp/scerweima2?url="+widget.data["qrcode"],fit: BoxFit.fill,),
+                 margin: EdgeInsets.only(bottom: 20),
+                 child: Image.network(widget.data["ali_ewm"],fit: BoxFit.fill,width: 150,),
                ),
-               Container(
-                 child: Text("订单号:"+widget.data["orderid"]),
-               ),
+
                Container(
                  margin: EdgeInsets.only(top: 20,bottom: 20),
                  child: Wrap(
@@ -91,19 +90,89 @@ class Login_ extends State<pay> {
                  ),
                ),
                Container(
-                 margin: EdgeInsets.only(top: 20),
+
                  child: MaterialButton(
                    minWidth: 200,
                    color: Colors.red,
                    onPressed: ()async{
-                     String url = widget.data["qrcode"];
-                     if (await canLaunch(url)) {
-                     await launch(url);
-                     } else {
-                     throw 'Could nsot launch $url';
-                     }
+                     ResultData res = await HttpManager.getInstance().post("recharge/submit_recharge",params: {"price":widget.data["actual_price"],"type":widget.data["type"]},withLoading: false);
+
+                     Toast.toast(context,msg: "申请成功");
+                     JumpAnimation().jump(new IndexBack(), context);
+
                    },
-                   child: Text("启动支付宝",style: TextStyle(color: Colors.white),),
+                   child: Text("提交支付申请",style: TextStyle(color: Colors.white),),
+                 ),
+               )
+             ],
+           ):Column(
+
+             children: <Widget>[
+               Container(
+                 margin: EdgeInsets.only(top: 90,bottom: 30),
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                   children: <Widget>[
+                     Container(
+                       child: Wrap(
+                         direction: Axis.vertical,
+                         spacing: 35,
+                         crossAxisAlignment: WrapCrossAlignment.start,
+                         children: <Widget>[
+                           Text("银行卡号:",style: TextStyle(fontSize: 17),),
+                           Text("开户行:",style: TextStyle(fontSize: 17),),
+                           Text("持卡人:",style: TextStyle(fontSize: 17),),
+                           Text("支付金额:",style: TextStyle(fontSize: 17),),
+                         ],
+                       ),
+                     ),
+                     Container(
+
+                       child: Wrap(
+                         direction: Axis.vertical,
+                         spacing: 35,
+                         crossAxisAlignment: WrapCrossAlignment.start,
+                         children: <Widget>[
+                           Row(
+                             children: <Widget>[
+                               Text(widget.data["bank_code"],style: TextStyle(fontSize: 17),),
+                               GestureDetector(
+                                 onTap: (){
+                                   Future res = Clipboard.setData(ClipboardData(text: widget.data["bank_code"]));
+                                   res.whenComplete(() =>Toast.toast(context,msg: "复制成功"));
+                                 },
+                                 child: Container(
+
+                                   padding: EdgeInsets.only(left: 5),
+                                   child:Text("复制",style: TextStyle(color: Colors.blue),),
+
+                                 ),
+                               ),
+                             ],
+                           ),
+                           Text(widget.data["bank_name"],style: TextStyle(fontSize: 17),),
+                           Text(widget.data["bank_user"],style: TextStyle(fontSize: 17),),
+                           Text(widget.data["actual_price"].toString()+"元",style: TextStyle(fontSize: 17),),
+                         ],
+                       ),
+                     )
+                   ],
+                 ),
+               ),
+
+               Container(
+
+                 child: MaterialButton(
+                   minWidth: 200,
+                   color: Colors.red,
+                   onPressed: ()async{
+                     ResultData res = await HttpManager.getInstance().post("recharge/submit_recharge",params: {"price":widget.data["actual_price"],"type":widget.data["type"]},withLoading: false);
+
+                     Toast.toast(context,msg: "申请成功");
+                     JumpAnimation().jump(new IndexBack(), context);
+
+                   },
+                   child: Text("提交支付申请",style: TextStyle(color: Colors.white),),
                  ),
                )
              ],
