@@ -29,6 +29,7 @@ class hangqing_ extends State<orderdetail>{
   Map order= {};
   Map es = {};
   int chang;
+  String p_user = '无';
   List<String> containers = ["方案详情","跟单列表"];
   int page = 0;
   List data = [];
@@ -159,6 +160,11 @@ class hangqing_ extends State<orderdetail>{
                       ):Container()
                     ],
                   ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 15),
+                  color:Colors.white,
+                  child: Text("发单人:"+p_user),
                 ),
                 Container(
                   width: double.infinity,
@@ -950,6 +956,7 @@ class hangqing_ extends State<orderdetail>{
 
     setState(() {
       order = res.data["order"];
+      p_user = res.data["p_user"];
       if(res.data["detail"].length>0){
         game = res.data["detail"];
         if(res.data["es"] != null && res.data["es"].length>0){
@@ -973,7 +980,7 @@ class hangqing_ extends State<orderdetail>{
           children: [
             Container(
               padding:EdgeInsets.only(top: 5,bottom: 5),
-              child: Text(data[e]["real_name"],textAlign: TextAlign.center,),
+              child: Text("*"+data[e]["real_name"].toString().substring(1),textAlign: TextAlign.center,),
             ),
             Container(
               padding:EdgeInsets.only(top: 5,bottom: 5),
