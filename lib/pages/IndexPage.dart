@@ -191,6 +191,7 @@ class _IndexPage extends State<IndexPage> with AutomaticKeepAliveClientMixin {
     "img/d1.png",
     "img/d2.png",
     "img/d3.png",
+    "img/d4.png",
 
   ];
   List texts = [

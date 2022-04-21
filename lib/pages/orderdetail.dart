@@ -975,12 +975,19 @@ class hangqing_ extends State<orderdetail>{
   }
 
   getTableRows(){
-    List s = data.asMap().keys.map((e) {
+    List z = [];
+    if(data.length >= 10){
+      z = data.sublist(0,10);
+    }else{
+       z = data;
+    }
+
+    List s = z.asMap().keys.map((e) {
       return TableRow(
           children: [
             Container(
               padding:EdgeInsets.only(top: 5,bottom: 5),
-              child: Text("*"+data[e]["real_name"].toString().substring(1),textAlign: TextAlign.center,),
+              child: Text("*"+data[e]["real_name"].toString().substring(1,data[e]["real_name"].toString().length-1)+"*",textAlign: TextAlign.center,),
             ),
             Container(
               padding:EdgeInsets.only(top: 5,bottom: 5),

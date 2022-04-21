@@ -78,7 +78,7 @@ class Login_ extends State<flowdetail> {
           children: [
             Container(
               padding:EdgeInsets.only(top: 5,bottom: 5),
-              child: Text("*"+data[e]["real_name"].toString().substring(1),textAlign: TextAlign.center,),
+              child: Text("*"+data[e]["real_name"].toString().substring(1,data[e]["real_name"].toString().length-1)+"*",textAlign: TextAlign.center,),
             ),
             Container(
               padding:EdgeInsets.only(top: 5,bottom: 5),
