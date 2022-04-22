@@ -73,7 +73,13 @@ class Login_ extends State<flowdetail> {
     });
   }
   getTableRows(){
-    List s = data.asMap().keys.map((e) {
+    List z = [];
+    if(data.length >= 10){
+      z = data.sublist(0,10);
+    }else{
+      z = data;
+    }
+    List s = z.asMap().keys.map((e) {
       return TableRow(
           children: [
             Container(
